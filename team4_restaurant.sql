@@ -26,3 +26,8 @@ calories int not null,
 allergens varchar(30),
 ingredients varchar(30) not null,
 primary key(item_id));
+
+show tables;
+
+alter table menu add special varchar(50) default "Standard item";
+alter table menu drop column special;
