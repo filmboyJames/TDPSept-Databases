@@ -31,3 +31,51 @@ show tables;
 
 alter table menu add special varchar(50) default "Standard item";
 alter table menu drop column special;
+alter table menu_table rename to menu;
+
+
+#DML Commands 
+#Create = Insert into
+#Read = Select
+#Update = Update
+#Delete = Delete
+
+select * from customers; #Wildcard for columns from table customers
+select id, firstname from customers; #Specific columns from table customers
+
+insert into customers(firstname, lastname, phone, address, postcode, email) values("Lard", "Bucket", "07895645821", "74 Hubble Lane", "EH5 7FD", "gap@jam.com"),
+("Lard", "Bucket", "07895645821", "74 Hubble Lane", "EH5 7FD", "gap@jam.com"),
+("Lard", "Bucket", "07895645821", "74 Hubble Lane", "EH5 7FD", "gap@jam.com"),
+("Lard", "Bucket", "07895645821", "74 Hubble Lane", "EH5 7FD", "gap@jam.com"),
+("Lard", "Bucket", "07895645821", "74 Hubble Lane", "EH5 7FD", "gap@jam.com");
+
+delete from customers where id=9;
+
+insert into customers(firstname, lastname, phone, address, postcode, email) values("Timothy", "Parpson", "07546321556", "The Gleaming", "EH7 9PO", "parpson@tim.com");
+
+update customers set firstname="Barb" where id=5;
+update customers set firstname="Herb" where id=6;
+update customers set firstname="Durb" where id=7;
+update customers set firstname="Crab" where id=8;
+
+alter table customers modify lastname varchar(50) after id;
+
+
+select * from menu; 
+select item_id, item, price from menu; 
+
+insert into menu(item,price,in_stock,image,calories,allergens,ingredients) values("Tofu in black bean sauce", 13.99, true, "link1", 890, "Soya", "Tofu, black beans"),
+("Tofu in black bean sauce", 13.99, true, "link1", 890, "Soya", "Tofu, black beans"),
+("Tofu in black bean sauce", 13.99, true, "link1", 890, "Soya", "Tofu, black beans"),
+("Tofu in black bean sauce", 13.99, true, "link1", 890, "Soya", "Tofu, black beans"),
+("Tofu in black bean sauce", 13.99, true, "link1", 890, "Soya", "Tofu, black beans");
+
+alter table menu 
+modify ingredients varchar(100) after calories;
+
+update menu set item ="Rainbow salad", price = 9.50, in_stock = true, image = "saladlink", calories = 555, allergens = "Celery", ingredients = "Lettuce, pepper, carrot, tomato, avocado" where item_id=2;
+update menu set item ="A potato", price = 1.50, in_stock = 0, image = "potatolink", calories = 10555, allergens = "Potato", ingredients = "Potato" where item_id=3;
+
+delete from menu where item_id=6;
+
+insert into menu(item,price,in_stock,image,calories,allergens,ingredients) values("Ham", 240.99, false, "hamlink", 2, "Pig", "Pork, water, colourings, flavourings, dirt");
