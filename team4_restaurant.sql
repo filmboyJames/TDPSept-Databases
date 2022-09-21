@@ -40,6 +40,8 @@ alter table menu_table rename to menu;
 #Update = Update
 #Delete = Delete
 
+describe customers;
+
 select * from customers; #Wildcard for columns from table customers
 select id, firstname from customers; #Specific columns from table customers
 
@@ -88,6 +90,11 @@ price decimal(6,2) not null,
 primary key(order_id),
 foreign key(cust_id) references customers(id));
 
+alter table orders add complete boolean;
+alter table orders add discounts decimal (5,2) default 0.0;
+
+select * from orders;
+
 create table order_items(
 oi_id int unique not null auto_increment,
 ord_id int not null,
@@ -96,3 +103,25 @@ quantity int,
 primary key (oi_id),
 foreign key (ord_id) references orders(order_id),
 foreign key (item_id) references menu(item_id));
+
+insert into orders(`date`,cust_id,price,discounts,complete) 
+values ("1985-03-27 17:00:00.0000",5,35.87,0,false),
+("1985-03-27 17:00:00.0000",5,35.87,0,false),
+("1985-03-27 17:00:00.0000",5,35.87,0,false),
+("1985-03-27 17:00:00.0000",5,35.87,0,false),
+("1985-03-27 17:00:00.0000",5,35.87,0,false);
+
+select * from orders;
+
+delete from orders where order_id=6;
+
+insert into order_items(ord_id,item_id,quantity) 
+values (4,7,2),
+(4,7,2),
+(4,7,2),
+(4,7,2),
+(4,7,2);
+
+select * from order_items;
+
+delete from order_items where oi_id=5;
