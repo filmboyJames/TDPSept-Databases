@@ -79,3 +79,20 @@ update menu set item ="A potato", price = 1.50, in_stock = 0, image = "potatolin
 delete from menu where item_id=6;
 
 insert into menu(item,price,in_stock,image,calories,allergens,ingredients) values("Ham", 240.99, false, "hamlink", 2, "Pig", "Pork, water, colourings, flavourings, dirt");
+
+create table orders(
+order_id int unique not null auto_increment,
+`date` timestamp,
+cust_id int not null,
+price decimal(6,2) not null,
+primary key(order_id),
+foreign key(cust_id) references customers(id));
+
+create table order_items(
+oi_id int unique not null auto_increment,
+ord_id int not null,
+item_id int not null,
+quantity int,
+primary key (oi_id),
+foreign key (ord_id) references orders(order_id),
+foreign key (item_id) references menu(item_id));
