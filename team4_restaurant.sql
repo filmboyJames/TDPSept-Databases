@@ -116,12 +116,29 @@ select * from orders;
 delete from orders where order_id=6;
 
 insert into order_items(ord_id,item_id,quantity) 
-values (4,7,2),
-(4,7,2),
-(4,7,2),
-(4,7,2),
-(4,7,2);
+values (4,1,2),
+(4,2,2),
+(4,3,2),
+(4,4,2),
+(4,5,2);
 
 select * from order_items;
 
 delete from order_items where oi_id=5;
+
+update order_items set ord_id=1 where oi_id=6;
+
+#READ from tables to view the records
+# SELECT * FROM table_name
+# SELECT col1, col2, col4 FROM table_name;
+#
+#WHERE clause
+# SELECT * FROM table_name WHERE col_name=value;  this is filtering what you see
+
+#OPERATORS
+# = is equal to
+# > greater than
+# < less than
+# != not equal to
+# >= greater than or equal to
+# <= less than or equal to
