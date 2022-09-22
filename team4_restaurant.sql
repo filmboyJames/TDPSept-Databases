@@ -55,10 +55,10 @@ delete from customers where id=9;
 
 insert into customers(firstname, lastname, phone, address, postcode, email) values("Timothy", "Parpson", "07546321556", "The Gleaming", "EH7 9PO", "parpson@tim.com");
 
-update customers set firstname="Barb" where id=5;
-update customers set firstname="Herb" where id=6;
-update customers set firstname="Durb" where id=7;
-update customers set firstname="Crab" where id=8;
+update customers set firstname="Barb" where id=1;
+update customers set firstname="Herb" where id=2;
+update customers set firstname="Durb" where id=3;
+update customers set firstname="Crab" where id=4;
 
 alter table customers modify lastname varchar(50) after id;
 
