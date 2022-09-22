@@ -13,7 +13,7 @@ select country.region, country.name, countrylanguage.language from countrylangua
 select * from city where `Name` like "F%" limit 25; #Q6 Ans displayed
 select count(code) from (
 select country.code, city.name from city join country on country.code=city.countrycode where country.name="China") as ChinaCities; #Q7 Ans = 363
-select name, population from country where population >0 order by population; #Q8 Ans = Pitcairn
+select name, population from country where population is not null and population >0 order by population limit 1; #Q8 Ans = Pitcairn
 select count(name) from country; #Q9 Ans = 239
 select name, surfacearea from country order by surfacearea desc limit 10; #Q10 Ans displayed
 select country.code, city.name, city.population from city join country on country.code=city.countrycode where country.name="Japan" order by population desc limit 5; #Q11 Ans Tokyo, Yokohama, Osaka, Nagoya, Sapporo
