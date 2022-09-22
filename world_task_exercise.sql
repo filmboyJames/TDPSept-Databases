@@ -16,3 +16,9 @@ select country.code, city.name from city join country on country.code=city.count
 select name, population from country where population >0 order by population; #Q8 Ans = Pitcairn
 select count(name) from country; #Q9 Ans = 239
 select name, surfacearea from country order by surfacearea desc limit 10; #Q10 Ans displayed
+select country.code, city.name, city.population from city join country on country.code=city.countrycode where country.name="Japan" order by population desc limit 5; #Q11 Ans Tokyo, Yokohama, Osaka, Nagoya, Sapporo
+select name, code, headofstate from country where headofstate = "elisabeth II" order by name; #Q12 Ans displayed
+select name, population, surfacearea, population/surfacearea as ratio from country where population >0 order by ratio limit 10; #Q13 Ans displayed
+select distinct language from countrylanguage;
+#select count(language) from (select distinct language from countrylanguage) as UniqueLanguages; #Q14 Ans displayed (count is 457)
+select name, GNP from country order by GNP desc limit 10; #Q15 Ans displayed
