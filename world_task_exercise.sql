@@ -9,7 +9,8 @@ select count(`name`) from city where CountryCode="USA"; #Q1 Ans = 274
 select `name`, population, lifeExpectancy from country where name = "Argentina"; #Q2 Ans Pop = 37032000 LifeExp = 75.1
 select `name`, population, lifeExpectancy from country order by lifeExpectancy DESC limit 1; #Q3 Ans Andorra
 select country.name, city.name from city join country on country.capital=city.id where country.name="Spain"; #Q4 Ans Madrid
-select country.region, country.name, countrylanguage.language from countrylanguage join country on countrylanguage.countrycode=country.code where country.region="Southeast Asia"; #Q5 Ans displayed
+select distinct countrylanguage.language from countrylanguage join country on countrylanguage.countrycode=country.code where country.region="Southeast Asia"; #Q5 Ans displayed
+# My original select country.region, country.name, countrylanguage.language from countrylanguage join country on countrylanguage.countrycode=country.code where country.region="Southeast Asia"; #Q5 Ans displayed
 select * from city where `Name` like "F%" limit 25; #Q6 Ans displayed
 select count(code) from (
 select country.code, city.name from city join country on country.code=city.countrycode where country.name="China") as ChinaCities; #Q7 Ans = 363
@@ -25,6 +26,6 @@ select name, GNP from country order by GNP desc limit 10; #Q15 Ans displayed
 select name, count(distinct name) from (select countrycode, language, name from countrylanguage join country on countrylanguage.countrycode=country.code) as countrylanguages ;
 select name, countrycode, count(language) from countrylanguage join country on countrylanguage.countrycode=country.code group by countrycode order by count(language) desc limit 10; #Q16 displayed, China top at 12
 select * from countrylanguage join country on countrylanguage.countrycode=country.code where language="German" AND percentage>50; #Q17 Ans displayed, 4 countries
-select name, min(lifeexpectancy) from country where lifeexpectancy is not null and lifeexpectancy>0; #Q18 Ans = Aruba
+select name, lifeexpectancy from country where lifeexpectancy is not null and lifeexpectancy>0 order by lifeexpectancy limit 1; #Q18 Ans = Zambia at 37.2
 select distinct GovernmentForm, count(GovernmentForm) from country group by GovernmentForm order by count(GovernmentForm) desc limit 3; #Q19 Ans displayed
 select count(IndepYear) from country where Indepyear is not null; #Q20 Ans = 192
