@@ -22,3 +22,9 @@ select name, population, surfacearea, population/surfacearea as ratio from count
 select distinct language from countrylanguage;
 #select count(language) from (select distinct language from countrylanguage) as UniqueLanguages; #Q14 Ans displayed (count is 457)
 select name, GNP from country order by GNP desc limit 10; #Q15 Ans displayed
+select name, count(distinct name) from (select countrycode, language, name from countrylanguage join country on countrylanguage.countrycode=country.code) as countrylanguages ;
+select name, countrycode, count(language) from countrylanguage join country on countrylanguage.countrycode=country.code group by countrycode order by count(language) desc limit 10; #Q16 displayed, China top at 12
+select * from countrylanguage join country on countrylanguage.countrycode=country.code where language="German" AND percentage>50; #Q17 Ans displayed, 4 countries
+select name, min(lifeexpectancy) from country where lifeexpectancy is not null and lifeexpectancy>0; #Q18 Ans = Aruba
+select distinct GovernmentForm, count(GovernmentForm) from country group by GovernmentForm order by count(GovernmentForm) desc limit 3; #Q19 Ans displayed
+select count(IndepYear) from country where Indepyear is not null; #Q20 Ans = 192
